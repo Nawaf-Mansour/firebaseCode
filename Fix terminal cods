@@ -1,0 +1,46 @@
+في حال لم تعمل الاوامر المشروحة قم بادخال هذه الاوامر بالتيرمينال لاصلاح المشكلة
+
+
+xcode-select --install
+
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+brew install automake autoconf libtool pkg-config libplist openssl libzip
+
+
+
+git clone https://github.com/openssl/openssl.git
+
+
+
+cd openssl
+
+
+
+./config
+
+
+
+make
+
+
+make install
+
+
+
+brew install curl
+
+
+ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
+
+
+
+ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
+
+
+
+ln -s /usr/local/Cellar/openssl/1.0.2j/bin/openssl openssl
+
+
