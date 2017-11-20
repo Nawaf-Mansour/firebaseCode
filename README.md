@@ -1,1 +1,1 @@
-# past all on AppDelegate.swift File
+# Past all on AppDelegate.swift File
