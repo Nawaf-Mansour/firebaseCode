@@ -14,9 +14,9 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
-
+    
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -37,7 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         FirebaseApp.configure()
         
         return true
+        
     }
+
+    
     
     func ConnectToFCM() {
         Messaging.messaging().shouldEstablishDirectChannel = true
@@ -48,14 +51,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
     }
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        
         Messaging.messaging().shouldEstablishDirectChannel = false
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        Messaging.messaging().shouldEstablishDirectChannel = false
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -63,20 +69,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        Messaging.messaging().shouldEstablishDirectChannel = false
     }
-    
+
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         ConnectToFCM()
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-
-        UIApplication.shared.applicationIconBadgeNumber += 1
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "com.DouglasDevlops.BadgeWasUpdated"), object: nil)
-    }
 }
-
-
-
-
