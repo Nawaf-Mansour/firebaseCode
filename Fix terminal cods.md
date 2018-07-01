@@ -4,46 +4,29 @@
 ` xcode-select --install `
 
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+` /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" `
 
+` cd /usr/local `
 
-brew install automake autoconf libtool pkg-config libplist openssl libzip
+` sudo mkdir ssl `
 
+` sudo chmod 777 /usr/local/ssl `
 
+` cd `
 
-git clone https://github.com/openssl/openssl.git
+` git clone https://github.com/openssl/openssl.git `
 
+` cd openssl `
 
+` ./config `
 
-cd openssl
+` make `
 
-
-
-./config
-
-
-
-make
-
-
-make install
+` make install `
 
 
 
-brew install curl
+` brew install curl `
 
 
-ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-
-
-
-ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-
-
-
-ln -s /usr/local/Cellar/openssl/1.0.2j/bin/openssl openssl
-
-
-
-
-sudo gem install cocoapods
+` sudo gem install cocoapods `
